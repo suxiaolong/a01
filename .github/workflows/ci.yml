@@ -32,10 +32,10 @@ jobs: # 工作流
           port: 22
           script: |
             pwd
-            ls
-            cd /opt/team
-            ls
+            cd /opt/a01/docs
             pwd
+            git pull
+            ls
 
 #      - name: stop script if command error
 #        uses: appleboy/ssh-action@master
