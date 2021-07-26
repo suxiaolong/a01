@@ -32,13 +32,13 @@ jobs: # 工作流
 #          local-dir: ./docs/
 #          server-dir: /home/xiaosu/
       - name: copy file via ssh password
-        uses: appleboy/scp-action@master
+        uses: suxiaolong/scp-action@master
         with:
           host: 118.25.22.194
           username: root
           password: ${{ secrets.PASSWORD_118 }}
           port: 22
-          source: "./docs/*"
+          source: "./docs/*"       # /home/xiaosu/docs
           target: "/home/xiaosu"   # /root/test/88.txt
 #      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
 #        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
