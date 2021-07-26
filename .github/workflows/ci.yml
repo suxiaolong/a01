@@ -30,7 +30,12 @@ jobs: # 工作流
           username: root
           password: ${{ secrets.PASSWORD_118 }}
           port: 22
-          script: mkdir abcde
+          script: |
+            pwd
+            ls
+            cd /opt/team
+            ls
+            pwd
 
 #      - name: stop script if command error
 #        uses: appleboy/ssh-action@master
@@ -55,65 +60,17 @@ jobs: # 工作流
 #          server-dir: /home/xiaosu/
 
 # 成功02 ssh scp远程同步文件
-      - name: copy file via ssh password
-        uses: suxiaolong/scp-action@master
-        with:
-          host: 118.25.22.194
-          username: root
-          password: ${{ secrets.PASSWORD_118 }}
-          port: 22
-          source: "./docs/*"       # /home/xiaosu/docs
-          target: "/home/xiaosu"   # /root/test/88.txt
-
-
-#      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
-#        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
+#      - name: copy file via ssh password
+#        uses: suxiaolong/scp-action@master
 #        with:
-#          server: 118.25.22.194
-#          username: xiaosu
-#          password: ${{ secrets.FTP_PASSWORD }}
-#          local-dir: ./docs/
-#          server-dir: /home/xiaosu/
-#
-#      - name: deploy file
-#        uses: wlixcc/SFTP-Deploy-Action@v1.0
-#        with:
-#          username: 'root'
-#          server: '119.23.224.32'
-#          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-#          local_path: './docs/*'
-#          remote_path: '/home/xiaosu'
-#          args: '-o ConnectTimeout=5'
+#          host: 118.25.22.194
+#          username: root
+#          password: ${{ secrets.PASSWORD_118 }}
+#          port: 22
+#          source: "./docs/*"       # /home/xiaosu/docs
+#          target: "/home/xiaosu"   # /root/test/88.txt
 
-#      - name: 开始ftp同步
-#        run: |
-#          git config git-ftp.url ${{ secrets.FTP_IP }}
-#          git config git-ftp.user ${{ secrets.FTP_USER }}
-#          git config git-ftp.password ${{ secrets.FTP_PASSWORD }}
-#          git ftp push --auto-init -vv --disable-epsv --changed-only -f
-#      - name: FTP Deploy
-#        uses: SamKirkland/FTP-Deploy-Action@4.1.0
-#        with:
-#          server: 118.25.22.194
-#          username: ftpxiaosu
-#          password: ${{ secrets.FTP_PASSWORD }}
-#          local-dir: ./docs/
-#          server-dir: /
-#          log-level: verbose
 
-      #      - name: run deploy.sh # 步骤3 （同时部署到github和coding）
-      #        env: # 设置环境变量
-      #          GITHUB_TOKEN: ${{ secrets.my_su_token }} # toKen私密变量
-      #        run: npm install && npm run deploy
-
-      #      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
-      #        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
-      #        with:
-      #          server: 118.25.22.194
-      #          username: ftpxiaosu
-      #          password: ${{ secrets.FTP_PASSWORD }}
-      #          local-dir: ./docs/
-      #          server-dir: opt/
 
 
 
