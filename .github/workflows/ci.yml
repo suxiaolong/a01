@@ -23,14 +23,22 @@ jobs: # 工作流
         uses: actions/setup-node@v1 # 作用：安装nodejs
         with:
           node-version: ${{ matrix.node-version }} # 版本
+#      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
+#        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
+#        with:
+#          server: 119.23.224.32
+#          username: xiaosu
+#          password: ${{ secrets.FTP_PASSWORD }}
+#          local-dir: ./docs/
+#          server-dir: /home/xiaosu/
       - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
-        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
-        with:
-          server: 119.23.224.32
-          username: xiaosu
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./docs/
-          server-dir: /home/xiaosu/
+          uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
+          with:
+            server: 118.25.22.194
+            username: xiaosu
+            password: ${{ secrets.FTP_PASSWORD }}
+            local-dir: ./docs/
+            server-dir: /home/xiaosu/
 
 
 #      - name: 开始ftp同步
