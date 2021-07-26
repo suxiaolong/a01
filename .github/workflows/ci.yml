@@ -19,23 +19,14 @@ jobs: # 工作流
     steps: # 步骤
       - name: Checkout # 步骤1
         uses: actions/checkout@v1 # 使用的动作。格式：userName/repoName。作用：检出仓库，获取源码。 官方actions库：https://github.com/actions
+      - run: mkdir -p path/to/artifact
+      - run: echo hello > path/to/artifact/world.txt
 #      - name: Use Node.js ${{ matrix.node-version }} # 步骤2
 #        uses: actions/setup-node@v1 # 作用：安装nodejs
 #        with:
 #          node-version: ${{ matrix.node-version }} # 版本
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: 118.25.22.194
-          username: root
-          password: ${{ secrets.PASSWORD_118 }}
-          port: 22
-          script: |
-            pwd
-            cd /opt/test01
-            pwd
-            git pull
-            ls
+
+
 
 #      - name: stop script if command error
 #        uses: appleboy/ssh-action@master
@@ -48,6 +39,21 @@ jobs: # 工作流
 #          script: |
 #            mkdir abcd
 #            ls -al
+
+#成功03 ssh登录 拉取服务器上指定仓库 git pull
+#      - name: executing remote ssh commands using password
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: 118.25.22.194
+#          username: root
+#          password: ${{ secrets.PASSWORD_118 }}
+#          port: 22
+#          script: |
+#            pwd
+#            cd /opt/test01
+#            pwd
+#            git pull
+#            ls
 
 # 成功01 ftp 远程同步文件（公司服务器可以，自己的服务器不行）
 #      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
