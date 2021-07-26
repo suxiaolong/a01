@@ -38,8 +38,8 @@ jobs: # 工作流
           username: root
           password: ${{ secrets.PASSWORD_118 }}
           port: 22
-          source: "88.txt"
-          target: "test"   # /root/test/88.txt
+          source: "./docs/*"
+          target: "/home/xiaosu"   # /root/test/88.txt
 #      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
 #        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
 #        with:
